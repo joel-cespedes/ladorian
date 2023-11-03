@@ -1,0 +1,12 @@
+{
+  "ladorian-login-does-not-member": "¿Todavia no eres miembro?",
+  "ladorian-login-register": "Regístrate",
+  "ladorian-login-log-in": "Inicia sesión",
+  "ladorian-login-welcome": "¡Bienvenido!",
+  "ladorian-login-forgot": "¿Olvidaste tu contraseña?",
+  "ladorian-login-continue-mail": "o continúa con tu email",
+  "ladorian-core-input-mail": "Correo electrónico",
+  "ladorian-core-input-password": "Contraseña",
+  "ladorian-core-btn-loging": "Iniciar sesión",
+  "ladorian-app-remember": "Recuérdame"
+}

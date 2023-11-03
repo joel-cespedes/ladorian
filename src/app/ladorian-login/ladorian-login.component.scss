@@ -1,0 +1,95 @@
+.wrap_home {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(300px, 550px) 1fr;
+    @media (max-width: 720px) {
+        display: flex !important;
+    }
+    .sliders {
+        background-color: green;
+        height: 100%;
+        @media (max-width: 720px) {
+            display: none;
+        }
+
+    }
+    .login_wrap {
+        @media (max-width: 720px) {
+            width: 100%;
+            padding: 20px !important;
+        }
+        padding: 64px 56px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .login_up {
+
+            .not_members {
+                display: flex;
+                align-items: center;
+                ladorian-btn {
+                    margin-left: 8px;
+                    font-size: 12px;
+                }
+            }
+            .login_logo {
+                margin-top: 16px;
+                width: 86px;
+            }
+        }
+        .login_down {
+            h1 {
+                font-size: 24px;
+                margin-bottom: 8px;
+                color: black;
+            }
+            span.welcome {
+                font-weight: 600;
+                margin-bottom: 24px;
+                display: block;
+            }
+            .logo_google {
+                width: 210px;
+                margin-bottom: 8px;
+            }
+            .label_cotinue {
+                display: flex;
+                justify-content: center;
+                color: var(--color-secondary);
+                position: relative;
+                font-size: 12px;
+                margin-bottom: 16px;
+                &::after,
+                &::before {
+                    content: '';
+                    width: 30%;
+                    height: 2px;
+                    background-color: var(--color-secondary);
+                    position: absolute;
+                    top: 50%;
+                    z-index: -1;
+                }
+                &::after {
+                    left: 0;
+                }
+                &::before {
+                    right: 0;
+
+                }
+            }
+            form {
+
+                .form_down {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 24px;
+                }
+                .wrap_input {
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+}

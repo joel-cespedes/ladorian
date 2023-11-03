@@ -1,0 +1,11 @@
+<div class="wrap_input" #wrap_input [class.error_input]="">
+    <input 
+        [type]="type" 
+        [attr.maxlength]="maxLength ? maxLength : 200" 
+        [attr.minLength]="minLength ? minLength : 1" 
+        [attr.required]="required" 
+        (focus)="chckFocus()"
+        (blur)="chckFocus()"        
+        #input>
+    <label [@labelAnimation]="inputValue ? 'up' : 'down'">{{placeholder}}</label>
+</div>  

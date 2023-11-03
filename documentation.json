@@ -1,0 +1,1167 @@
+{
+    "pipes": [
+        {
+            "name": "TranslatePipe",
+            "id": "pipe-TranslatePipe-3211147ec4918ec1381781e5fdd36fe0c4ecadc74e3782f0a985b91b54ea0dee5b7dbbe8ff70f5c4c40d4d8d279adc881d0411f99c4467f4e3767c506981ba33",
+            "file": "src/app/core/ui/translate/translate.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "params",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "params",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "standalone": true,
+            "ngname": "translate",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { TranslateService } from './translate.service';\n\n@Pipe({ \n  name: 'translate',\n  standalone: true, \n})\n\nexport class TranslatePipe implements PipeTransform {\n\n  constructor(private translateService: TranslateService) { }\n\n  transform(key: any, params?: string): any {\n    return this.translateService.translate(key, params) || key;\n  }\n\n}\n"
+        }
+    ],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "TranslateService",
+            "id": "injectable-TranslateService-dff22326696f40ef821b3307e425fa3f628036c94206cca376a3b84ffabdc6143e23b037344c8cde94b8369be591c69d033dc4c37bb7a11e56ed4ce936ad6c1d",
+            "file": "src/app/core/ui/translate/translate.service.ts",
+            "properties": [
+                {
+                    "name": "currentLang",
+                    "defaultValue": "new BehaviorSubject<string>('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "currentLang$",
+                    "defaultValue": "this.currentLang.asObservable()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "httpClient",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HttpClient",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "labels",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "<p>Label Holder</p>\n",
+                    "line": 13,
+                    "rawdescription": "\nLabel Holder",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "translate",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>Recibe por pipe la key a traducir</p>\n",
+                    "line": 43,
+                    "rawdescription": "\nRecibe por pipe la key a traducir",
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "use",
+                    "args": [
+                        {
+                            "name": "lang",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<literal type>",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLanguage Loader",
+                    "description": "<p>Language Loader</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "lang",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { HttpBackend, HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { BehaviorSubject } from 'rxjs';\n\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TranslateService {\n\n  /** Label Holder */\n  public labels: any = {};\n\n  public httpClient: HttpClient;\n  private currentLang = new BehaviorSubject<string>('');\n  public currentLang$ = this.currentLang.asObservable();\n\n\n  constructor(private router: Router, handler: HttpBackend) {\n    this.httpClient = new HttpClient(handler);\n  }\n\n  /** Language Loader */\n  public use(lang: string): Promise<{}> {\n    const url = `assets/i18n/${lang || 'es'}.json`;\n\n    this.currentLang.next(lang)\n    return new Promise<{}>(\n      resolve => {\n        const app$ = this.httpClient.get(`assets/i18n/${lang || 'es'}.json`);\n        app$.subscribe(response => {\n          this.labels = response;\n          resolve(true);\n        });\n      }\n    );\n  }\n\n\n\n  /** Recibe por pipe la key a traducir */\n  public translate = (key: string, params: any) => {\n\n\n    //Buscamos dentro del archivo json i18n la key a traduciir\n    const foundAppKey = this.labels[key];\n\n    //Si no exite la key en el archivo disparamos un error\n    if (!foundAppKey) {\n     // alert(\"This keys doesn't match\")\n    }\n\n    /*\n      Si existe parametros en el pipe de traducción lo usamos\n      buscamos la key (esta key debe terner el nombre del parçametro con corchetes {ejemplo} )\n      */\n    if (params) {\n      const ls = Object.keys(params);\n\n      //Verificamos de que que el parámetro tenga el mismo nombre\n      if (!ls) {\n        alert(\"This keys doesn't match\")\n      }\n\n      //Buscamos los parametros y los reemplazamos en la palabra identificada con la key\n      let withParameter = foundAppKey;\n\n      ls.forEach(param => {\n        withParameter = withParameter.replace(`{${param}}`, params[param])\n      })\n      return withParameter\n\n    }\n    return foundAppKey;\n\n  }\n\n\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "handler",
+                        "type": "HttpBackend",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "handler",
+                        "type": "HttpBackend",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-1f6c2b463eafd3383a328ca11803478de48f7ffe910aab750f5f0da63a8d45118f96180c5a7fe8e067cd05600e2efb9b24cb824656e2369382799e89f3e83c71",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "LadorianLoginComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { LadorianLoginComponent } from './ladorian-login/ladorian-login.component';\nimport { TranslateService } from './core/ui/translate/translate.service';\n\n@Component({\n  selector: 'ladorian-root',\n  standalone: true,\n  imports: [ RouterOutlet, LadorianLoginComponent],\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "  <ladorian-login></ladorian-login>"
+        },
+        {
+            "name": "LadorianBtnComponent",
+            "id": "component-LadorianBtnComponent-c5b98f234997d6ec5e0637f4bd5bfff63768d33d8b5600c3bb1aa6bdb3a8b420f5c5e8d43731cd1a3adaf2a6f49116b51433de988815904094f10cbca741099f",
+            "file": "src/app/core/ui/ladorian-btn/ladorian-btn.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-btn",
+            "styleUrls": [
+                "./ladorian-btn.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ladorian-btn.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "\"reset\" | \"summit\" | \"button\"",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 15,
+                    "type": "\"primary\" | \"secondary\"",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "\"default\" | \"filled\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'ladorian-btn',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './ladorian-btn.component.html',\n  styleUrls: ['./ladorian-btn.component.scss']\n})\nexport class LadorianBtnComponent {\n\n  @Input() action!: 'reset' | 'summit' | 'button';\n\n  @Input({ required: true }) color: 'primary' | 'secondary' = 'primary';\n\n  @Input() type: 'default' | 'filled' = 'default';\n  \n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host-context(.bold-600) {\n    button {\n        font-weight: 600;\n    }\n}\n:host-context(.bold-700) {\n    button {\n        font-weight: 700;\n    }\n}\n\nbutton {\n    cursor: pointer;\n    font-family: 'DM Sans', sans-serif;\n    border: none;\n    display: block;\n}\n\nbutton.filled {\n    border-radius: 100px;\n    border: 1px solid transparent;\n    padding: 16px;\n    transition: all 0.3s ease;\n    &:hover {\n        background-color: white;\n        color: var(--color-primary);\n        border: 1px solid var(--color-primary);\n\n    }\n}\n.primary {\n    background-color: var(--color-primary);\n    color: white;\n}\n.secondary {\n    background-color: var(--color-secondary);\n    color: var(--color-primary);\n}\nbutton.default {\n    background-color: transparent;\n    color: var(--color-primary);\n    &:hover {\n        color: var(--color-secondary);\n    }\n}",
+                    "styleUrl": "./ladorian-btn.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<button [ngClass]=\"{\n        'default': type === 'default',\n        'filled': type === 'filled',\n        'primary': color === 'primary', \n        'secondary': color === 'secondary', \n    }\">\n    <ng-content></ng-content>\n</button>"
+        },
+        {
+            "name": "LadorianInputComponent",
+            "id": "component-LadorianInputComponent-6389d50b8b5ee617964d8edb01fb6870e61cac7c78062fffc864442b776b6791cdca3ed9f62394558d3ead7c568e4334ed67703bb90891aa04e645adb1855cb8",
+            "file": "src/app/core/ui/ladorian-input/ladorian-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-input",
+            "styleUrls": [
+                "./ladorian-input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ladorian-input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "errorInput",
+                    "defaultValue": "'Supporting text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 39,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "maxLength",
+                    "defaultValue": "40",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "minLength",
+                    "defaultValue": "2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Ingresa datos...'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "focus",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "input",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'input', {static: false}"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "inputValue",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "chckFocus",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "checkFocusAndValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgFor"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, Input, ViewChild, ViewChildren } from '@angular/core';\nimport { CommonModule, NgFor, NgIf } from '@angular/common';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { FormsModule } from '@angular/forms';\nimport { trigger, state, style, animate, transition } from '@angular/animations';\n\n@Component({\n  selector: 'ladorian-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, NgIf, NgFor],\n  templateUrl: './ladorian-input.component.html',\n  styleUrls: ['./ladorian-input.component.scss'],\n  animations: [\n    trigger('labelAnimation', [\n      state('up', style({\n        transform: 'translateY(-.9em)',\n      })),\n      state('down', style({\n        transform: 'translateY(0)',\n      })),\n      transition('down => up', animate('300ms ease-in')),\n      transition('up => down', animate('300ms ease-out'))\n    ])\n  ]\n})\n\nexport class LadorianInputComponent {\n\n  public inputValue: string = '';\n\n  public focus: boolean = false;\n\n  @ViewChild('input', { static: false }) input!: ElementRef;\n\n  @Input() type: string = 'text';\n\n  @Input() placeholder: string = 'Ingresa datos...';\n\n  @Input() errorInput: string = 'Supporting text';\n\n  @Input() maxLength: number = 40;\n\n  @Input() minLength: number = 2;\n\n  @Input() required: boolean = false;\n\n\n\n  checkFocusAndValue() {\n    const isFocused = document.activeElement === this.input.nativeElement;\n    this.inputValue = isFocused || this.input.nativeElement.value;\n  }\n\n  ngAfterViewInit() {\n    this.checkFocusAndValue()\n  }\n\n  chckFocus() {\n    this.checkFocusAndValue();\n  }\n\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n    display: block;\n    position: relative;\n}\n\n\n.wrap_input {\n    position: relative;\n\n    label {\n        display: block;\n        position: absolute;\n        top: 14px;\n        padding-left: 24px;\n\n    }\n    input {\n        font-family: 'DM Sans', sans-serif;\n        border: 1px solid var(--color-border);\n        padding: 16px 24px;\n        font-weight: 300;\n        border-radius: 48px;\n        width: 100%;\n        background: transparent;\n        font-weight: 400;\n        font-size: 16px;\n        &:focus {\n            outline: none;\n            padding: 22px 24px 10px 24px;\n            border: 1px solid var(--color-primary);\n        }\n\n    }\n}",
+                    "styleUrl": "./ladorian-input.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"wrap_input\" #wrap_input [class.error_input]=\"\">\n    <input \n        [type]=\"type\" \n        [attr.maxlength]=\"maxLength ? maxLength : 200\" \n        [attr.minLength]=\"minLength ? minLength : 1\" \n        [attr.required]=\"required\" \n        (focus)=\"chckFocus()\"\n        (blur)=\"chckFocus()\"        \n        #input>\n    <label [@labelAnimation]=\"inputValue ? 'up' : 'down'\">{{placeholder}}</label>\n</div>  "
+        },
+        {
+            "name": "LadorianLoginComponent",
+            "id": "component-LadorianLoginComponent-03e6462780c1fd7f4e43932fd8cf5cbe28df9d7ce29904013aa2dbd02e3257c628e62a011c46e73845fff7123f08f9c4a1c6967fddfc7d7a41745f0fe5fd1c1b",
+            "file": "src/app/ladorian-login/ladorian-login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-login",
+            "styleUrls": [
+                "./ladorian-login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ladorian-login.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "LadorianInputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "LadorianBtnComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "LadorianSliderComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "TranslatePipe",
+                    "type": "pipe"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LadorianInputComponent } from '../core/ui/ladorian-input/ladorian-input.component';\nimport { LadorianBtnComponent } from '../core/ui/ladorian-btn/ladorian-btn.component';\nimport { LadorianSliderComponent } from '../core/ui/ladorian-slider/ladorian-slider.component';\nimport { TranslatePipe } from '../core/ui/translate/translate.pipe';\n\n@Component({\n  selector: 'ladorian-login',\n  standalone: true,\n  imports: [CommonModule, LadorianInputComponent, LadorianBtnComponent, LadorianSliderComponent, TranslatePipe],\n  templateUrl: './ladorian-login.component.html',\n  styleUrls: ['./ladorian-login.component.scss']\n})\nexport class LadorianLoginComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrap_home {\n    height: 100vh;\n    display: grid;\n    grid-template-columns: minmax(300px, 550px) 1fr;\n    @media (max-width: 720px) {\n        display: flex !important;\n    }\n    .sliders {\n        background-color: green;\n        height: 100%;\n        @media (max-width: 720px) {\n            display: none;\n        }\n\n    }\n    .login_wrap {\n        @media (max-width: 720px) {\n            width: 100%;\n            padding: 20px !important;\n        }\n        padding: 64px 56px;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: space-between;\n        .login_up {\n\n            .not_members {\n                display: flex;\n                align-items: center;\n                ladorian-btn {\n                    margin-left: 8px;\n                    font-size: 12px;\n                }\n            }\n            .login_logo {\n                margin-top: 16px;\n                width: 86px;\n            }\n        }\n        .login_down {\n            h1 {\n                font-size: 24px;\n                margin-bottom: 8px;\n                color: black;\n            }\n            span.welcome {\n                font-weight: 600;\n                margin-bottom: 24px;\n                display: block;\n            }\n            .logo_google {\n                width: 210px;\n                margin-bottom: 8px;\n            }\n            .label_cotinue {\n                display: flex;\n                justify-content: center;\n                color: var(--color-secondary);\n                position: relative;\n                font-size: 12px;\n                margin-bottom: 16px;\n                &::after,\n                &::before {\n                    content: '';\n                    width: 30%;\n                    height: 2px;\n                    background-color: var(--color-secondary);\n                    position: absolute;\n                    top: 50%;\n                    z-index: -1;\n                }\n                &::after {\n                    left: 0;\n                }\n                &::before {\n                    right: 0;\n\n                }\n            }\n            form {\n\n                .form_down {\n                    display: flex;\n                    align-items: center;\n                    justify-content: space-between;\n                    margin-bottom: 24px;\n                }\n                .wrap_input {\n                    margin-bottom: 16px;\n                }\n            }\n        }\n    }\n}",
+                    "styleUrl": "./ladorian-login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"wrap_home\">\n    <div class=\"login_wrap\">\n        <div class=\"login_up\">\n            <div class=\"not_members\">\n                <p>{{'ladorian-login-does-not-member' | translate }}</p>\n                <ladorian-btn class=\"bold-600\" type=\"default\" color=\"primary\">{{'ladorian-login-register' | translate}} </ladorian-btn>\n            </div>\n            <div class=\"login_logo\">\n                <img src=\"assets/img/logo.svg\" alt=\"logo\">\n            </div>\n        </div>\n        <div class=\"login_down\">\n            <h1>{{'ladorian-login-log-in' | translate}}</h1>\n            <span class=\"welcome\">{{'ladorian-login-welcome' | translate}} </span>\n            <div class=\"logo_google\">\n                <img src=\"assets/img/google-logo.svg\" alt=\"logo google\">\n            </div>\n            <div class=\"label_cotinue\">\n                <span>{{'ladorian-login-continue-mail' | translate}}</span>\n            </div>\n            <form action=\"\">\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-mail' | translate}}\" [required]=\"true\" type=\"email\"></ladorian-input>\n                </div>\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-password' | translate}}\" [required]=\"true\" type=\"password\"></ladorian-input>\n                </div>\n                <div class=\"form_down\">\n                    <div class=\"checkbox-wrapper\">\n                        <input class=\"inp-cbx\" id=\"morning\" type=\"checkbox\" />\n                        <label class=\"cbx\" for=\"morning\"><span>\n                                <svg width=\"12px\" height=\"10px\">\n                                    <use xlink:href=\"#check-4\"></use>\n                                </svg></span><span>{{'ladorian-app-remember' | translate}}</span></label>\n                        <svg class=\"inline-svg\">\n                            <symbol id=\"check\" viewbox=\"0 0 12 10\">\n                                <polyline points=\"1.5 6 4.5 9 10.5 1\"></polyline>\n                            </symbol>\n                        </svg>\n                    </div>\n                    <ladorian-btn type=\"default\" color=\"primary\">{{'ladorian-login-forgot' | translate}}</ladorian-btn>\n                </div>\n                <ladorian-btn type=\"filled\" color=\"secondary\" class=\"bold-700\">{{'ladorian-core-btn-loging' | translate}} </ladorian-btn>\n            </form>\n        </div>\n\n    </div>\n    <div class=\"sliders\">\n        <ladorian-slider></ladorian-slider>\n    </div>\n</div>"
+        },
+        {
+            "name": "LadorianSliderComponent",
+            "id": "component-LadorianSliderComponent-754c62c846bc5cfd4618b1fb98b0ca05f22606465d85a49ffa68ee0fb0d2881d1092f2f6f2718400933c5795c9c43959d984b28782c8dcbc423746e5664d6b73",
+            "file": "src/app/core/ui/ladorian-slider/ladorian-slider.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-slider",
+            "styleUrls": [
+                "./ladorian-slider.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ladorian-slider.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "images",
+                    "defaultValue": "['slider1.png']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'ladorian-slider',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './ladorian-slider.component.html',\n  styleUrls: ['./ladorian-slider.component.scss']\n})\nexport class LadorianSliderComponent {\n\n  @Input() images: string[] = ['slider1.png'];\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n    display: block;\n    height: 100vh;\n    width: 100%;\n}\n.sliders,\n.slider {\n    width: 100%;\n    height: 100%;\n}\n.slider {\n    background-size: cover;\n    background-position: center;\n}",
+                    "styleUrl": "./ladorian-slider.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"sliders\">\n    <div class=\"slider\" [ngStyle]=\"{'background-image': 'url(assets/img/'+img+')'}\" *ngFor=\"let img of images\">\n    </div>\n</div>"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(),\n    { \n      provide: APP_INITIALIZER, \n      useFactory: initialise, \n      deps: [TranslateService], \n      multi: true \n    }\n  ]\n}"
+            },
+            {
+                "name": "customDefault",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Filled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "password",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": ".storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+            },
+            {
+                "name": "secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Slider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LadorianInputComponent>",
+                "defaultValue": "(args: LadorianInputComponent) => ({\n    component: LadorianInputComponent,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LadorianSliderComponent>",
+                "defaultValue": "(args: LadorianSliderComponent) => ({\n    component: LadorianSliderComponent,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LadorianBtnComponent>",
+                "defaultValue": "(args: LadorianBtnComponent ) => ({\n    component: LadorianBtnComponent,\n    props: args,\n    template: `\n        <ladorian-btn type=\"${args.type}\" color=\"${args.color}\">Ladorian</ladorian-btn>\n    `,\n})"
+            },
+            {
+                "name": "text",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            }
+        ],
+        "functions": [
+            {
+                "name": "initialise",
+                "file": "src/app/app.config.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "translate",
+                        "type": "TranslateService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "translate",
+                        "type": "TranslateService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [\n    provideRouter(routes),\n    provideAnimations(),\n    provideHttpClient(),\n    { \n      provide: APP_INITIALIZER, \n      useFactory: initialise, \n      deps: [TranslateService], \n      multi: true \n    }\n  ]\n}"
+                }
+            ],
+            "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts": [
+                {
+                    "name": "customDefault",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Filled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LadorianBtnComponent>",
+                    "defaultValue": "(args: LadorianBtnComponent ) => ({\n    component: LadorianBtnComponent,\n    props: args,\n    template: `\n        <ladorian-btn type=\"${args.type}\" color=\"${args.color}\">Ladorian</ladorian-btn>\n    `,\n})"
+                }
+            ],
+            "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts": [
+                {
+                    "name": "password",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LadorianInputComponent>",
+                    "defaultValue": "(args: LadorianInputComponent) => ({\n    component: LadorianInputComponent,\n    props: args,\n})"
+                },
+                {
+                    "name": "text",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            ".storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": ".storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
+                }
+            ],
+            "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts": [
+                {
+                    "name": "Slider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LadorianSliderComponent>",
+                    "defaultValue": "(args: LadorianSliderComponent) => ({\n    component: LadorianSliderComponent,\n    props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "initialise",
+                    "file": "src/app/app.config.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "translate",
+                            "type": "TranslateService",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "translate",
+                            "type": "TranslateService",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 1,
+        "status": "low",
+        "files": [
+            {
+                "filePath": ".storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "initialise",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-btn/ladorian-btn.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LadorianBtnComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "customDefault",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Filled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-input/ladorian-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LadorianInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "password",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "text",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-slider/ladorian-slider.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LadorianSliderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Slider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/translate/translate.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "TranslatePipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/translate/translate.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TranslateService",
+                "coveragePercent": 37,
+                "coverageCount": "3/8",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/ladorian-login/ladorian-login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LadorianLoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
