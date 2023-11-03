@@ -12,6 +12,7 @@
         position: absolute;
         top: 14px;
         padding-left: 24px;
+        z-index: 0;
 
     }
     input {
@@ -24,6 +25,8 @@
         background: transparent;
         font-weight: 400;
         font-size: 16px;
+        z-index: 1;
+        position: relative;
         &:focus {
             outline: none;
             padding: 22px 24px 10px 24px;
