@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LadorianLoginComponent } from './ladorian-login/ladorian-login.component';
-import { TranslateService } from './core/ui/translate/translate.service';
+import { TranslateService } from './core/translate/translate.service';
 
 @Component({
   selector: 'ladorian-root',

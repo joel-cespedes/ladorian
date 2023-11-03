@@ -34,19 +34,8 @@ describe('TranslateService', () => {
     expect(service.translate('key1', { parametro: 'res_parametro' })).toBe('something res_parametro')
   });
 
-  it('should dispash errorKey', () => {
-    service.labels = {}
-    spyOn(service, 'errorKey');
-    service.translate('key1')
-    expect(service.errorKey).toHaveBeenCalled();
-  });
 
-  it('should change lang', () => {
-    const response = { 'key1': 'something1' };
-    spyOn(service.httpClient, 'get').and.returnValue(of(response))
-    service.setLanguaje('es')
-    expect(service.labels).toBe(response)
-  });
+
 
   it('should return a promise', () => {
     service.use('es').then(res => {

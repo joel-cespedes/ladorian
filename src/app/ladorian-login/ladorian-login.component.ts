@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LadorianInputComponent } from '../core/ui/ladorian-input/ladorian-input.component';
 import { LadorianBtnComponent } from '../core/ui/ladorian-btn/ladorian-btn.component';
 import { LadorianSliderComponent } from '../core/ui/ladorian-slider/ladorian-slider.component';
-import { TranslatePipe } from '../core/ui/translate/translate.pipe';
+import { TranslatePipe } from '../core/translate/translate.pipe';
 import { LadorianCheckboxComponent } from '../core/ui/ladorian-checkbox/ladorian-checkbox.component';
 
 @Component({
