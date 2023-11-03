@@ -10,11 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class LadorianBtnComponent {
 
-  @Input()  action: string = 'summit';
+  @Input() action!: 'reset' | 'summit' | 'button';
 
-  @Input({ required: true })  color: string = 'primary';
+  @Input({ required: true }) color: 'primary' | 'secondary' = 'primary';
 
-  @Input() type: string = 'default';
+  @Input() type: 'default' | 'filled' = 'default';
   
 
 }

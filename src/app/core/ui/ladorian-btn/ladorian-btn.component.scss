@@ -17,9 +17,7 @@ button {
 }
 
 button.filled {
-    background-color: var(--color-primary);
     border-radius: 100px;
-    color: white;
     border: 1px solid transparent;
     padding: 16px;
     transition: all 0.3s ease;
@@ -30,7 +28,18 @@ button.filled {
 
     }
 }
+.primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+.secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
 button.default {
     background-color: transparent;
     color: var(--color-primary);
+    &:hover {
+        color: var(--color-secondary);
+    }
 }
