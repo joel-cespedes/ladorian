@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/styles/main.scss';
+
+
+:root {
+    --color-primary: #439E37;
+    --color-secondary: #D2D5D4;
+    --color-warning: #F43D15;
+    --color-text: #C3C5C3;
+    --color-placeholder: #AAADA9;
+    --color-border: #EAEBEB;
+}
 
 * {
     margin: 0;

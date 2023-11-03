@@ -1,6 +1,5 @@
-import { Component, ElementRef, Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild,  } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 

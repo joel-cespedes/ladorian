@@ -357,6 +357,74 @@
             "templateData": "<button [ngClass]=\"{\n        'default': type === 'default',\n        'filled': type === 'filled',\n        'primary': color === 'primary', \n        'secondary': color === 'secondary', \n    }\">\n    <ng-content></ng-content>\n</button>"
         },
         {
+            "name": "LadorianCheckboxComponent",
+            "id": "component-LadorianCheckboxComponent-dce26799d6458d3b64f92c8da01c7e3a17d89a28db7fb0b5e4d5eddc938e25131375927842995561707f6e91a3d53bdbd4fc88aad2cdf2fa13db2c58ace87596",
+            "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ladorian-checkbox",
+            "styleUrls": [
+                "./ladorian-checkbox.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ladorian-checkbox.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'ladorian-checkbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './ladorian-checkbox.component.html',\n  styleUrls: ['./ladorian-checkbox.component.scss']\n})\nexport class LadorianCheckboxComponent {\n\n  @Input() label: string = '';\n\n  @Input() value: boolean = false;\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".checkbox-wrapper * {\n    box-sizing: border-box;\n}\n\n.checkbox-wrapper .cbx {\n    -webkit-user-select: none;\n    user-select: none;\n    cursor: pointer;\n    border-radius: 6px;\n    overflow: hidden;\n    transition: all 0.2s ease;\n    display: inline-block;\n}\n\n.checkbox-wrapper .cbx:not(:last-child) {\n    margin-right: 6px;\n}\n\n.checkbox-wrapper .cbx:hover {\n    background: rgba(0, 119, 255, 0.06);\n}\n\n.checkbox-wrapper .cbx span {\n    float: left;\n    vertical-align: middle;\n    transform: translate3d(0, 0, 0);\n}\n\n.checkbox-wrapper .cbx span:first-child {\n    position: relative;\n    width: 18px;\n    height: 18px;\n    border-radius: 4px;\n    transform: scale(1);\n    border: 1px solid #cccfdb;\n    transition: all 0.2s ease;\n    box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);\n}\n\n.checkbox-wrapper .cbx span:first-child svg {\n    position: absolute;\n    top: 3px;\n    left: 2px;\n    fill: none;\n    stroke: #fff;\n    stroke-width: 2;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-dasharray: 16px;\n    stroke-dashoffset: 16px;\n    transition: all 0.3s ease;\n    transition-delay: 0.1s;\n    transform: translate3d(0, 0, 0);\n}\n\n.checkbox-wrapper .cbx span:last-child {\n    padding-left: 8px;\n    line-height: 18px;\n}\n\n.checkbox-wrapper .cbx:hover span:first-child {\n    border-color: var(--color-primary);\n}\n\n.checkbox-wrapper .inp-cbx {\n    position: absolute;\n    visibility: hidden;\n}\n\n.checkbox-wrapper .inp-cbx:checked+.cbx span:first-child {\n    background: var(--color-primary);\n    border-color: var(--color-primary);\n    animation: wave 0.4s ease;\n}\n\n.checkbox-wrapper .inp-cbx:checked+.cbx span:first-child svg {\n    stroke-dashoffset: 0;\n}\n\n.checkbox-wrapper .inline-svg {\n    position: absolute;\n    width: 0;\n    height: 0;\n    pointer-events: none;\n    user-select: none;\n}\n\n@media screen and (max-width: 640px) {\n    .checkbox-wrapper .cbx {\n        width: 100%;\n        display: inline-block;\n    }\n}\n\n@-moz-keyframes wave {\n    50% {\n        transform: scale(0.9);\n    }\n}\n\n@-webkit-keyframes wave {\n    50% {\n        transform: scale(0.9);\n    }\n}\n\n@-o-keyframes wave {\n    50% {\n        transform: scale(0.9);\n    }\n}\n\n@keyframes wave {\n    50% {\n        transform: scale(0.9);\n    }\n}",
+                    "styleUrl": "./ladorian-checkbox.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"checkbox-wrapper\">\n    <input class=\"inp-cbx\" id=\"morning\" type=\"checkbox\" [attr.checked]=\"value\"  />\n    <label class=\"cbx\" for=\"morning\"><span>\n            <svg width=\"12px\" height=\"10px\">\n                <use xlink:href=\"#check-4\"></use>\n            </svg></span><span>{{label}}</span></label>\n    <svg class=\"inline-svg\">\n        <symbol id=\"check\" viewbox=\"0 0 12 10\">\n            <polyline points=\"1.5 6 4.5 9 10.5 1\"></polyline>\n        </symbol>\n    </svg>\n</div>"
+        },
+        {
             "name": "LadorianInputComponent",
             "id": "component-LadorianInputComponent-6389d50b8b5ee617964d8edb01fb6870e61cac7c78062fffc864442b776b6791cdca3ed9f62394558d3ead7c568e4334ed67703bb90891aa04e645adb1855cb8",
             "file": "src/app/core/ui/ladorian-input/ladorian-input.component.ts",
@@ -538,7 +606,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n    display: block;\n    position: relative;\n}\n\n\n.wrap_input {\n    position: relative;\n\n    label {\n        display: block;\n        position: absolute;\n        top: 14px;\n        padding-left: 24px;\n\n    }\n    input {\n        font-family: 'DM Sans', sans-serif;\n        border: 1px solid var(--color-border);\n        padding: 16px 24px;\n        font-weight: 300;\n        border-radius: 48px;\n        width: 100%;\n        background: transparent;\n        font-weight: 400;\n        font-size: 16px;\n        &:focus {\n            outline: none;\n            padding: 22px 24px 10px 24px;\n            border: 1px solid var(--color-primary);\n        }\n\n    }\n}",
+                    "data": ":host {\n    display: block;\n    position: relative;\n}\n\n\n.wrap_input {\n    position: relative;\n\n    label {\n        display: block;\n        position: absolute;\n        top: 14px;\n        padding-left: 24px;\n        z-index: 0;\n\n    }\n    input {\n        font-family: 'DM Sans', sans-serif;\n        border: 1px solid var(--color-border);\n        padding: 16px 24px;\n        font-weight: 300;\n        border-radius: 48px;\n        width: 100%;\n        background: transparent;\n        font-weight: 400;\n        font-size: 16px;\n        z-index: 1;\n        position: relative;\n        &:focus {\n            outline: none;\n            padding: 22px 24px 10px 24px;\n            border: 1px solid var(--color-primary);\n        }\n\n    }\n}",
                     "styleUrl": "./ladorian-input.component.scss"
                 }
             ],
@@ -548,7 +616,7 @@
         },
         {
             "name": "LadorianLoginComponent",
-            "id": "component-LadorianLoginComponent-03e6462780c1fd7f4e43932fd8cf5cbe28df9d7ce29904013aa2dbd02e3257c628e62a011c46e73845fff7123f08f9c4a1c6967fddfc7d7a41745f0fe5fd1c1b",
+            "id": "component-LadorianLoginComponent-de56dcd20831f5fbfeb7b5d5a4ba5a440bf09f0e5841a910f29c00fd7e4c7015e29640bcbf60d8d572c8b3a3d518baa879389b8b335012ee836651119461a01c",
             "file": "src/app/ladorian-login/ladorian-login.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -594,12 +662,16 @@
                 {
                     "name": "TranslatePipe",
                     "type": "pipe"
+                },
+                {
+                    "name": "LadorianCheckboxComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LadorianInputComponent } from '../core/ui/ladorian-input/ladorian-input.component';\nimport { LadorianBtnComponent } from '../core/ui/ladorian-btn/ladorian-btn.component';\nimport { LadorianSliderComponent } from '../core/ui/ladorian-slider/ladorian-slider.component';\nimport { TranslatePipe } from '../core/ui/translate/translate.pipe';\n\n@Component({\n  selector: 'ladorian-login',\n  standalone: true,\n  imports: [CommonModule, LadorianInputComponent, LadorianBtnComponent, LadorianSliderComponent, TranslatePipe],\n  templateUrl: './ladorian-login.component.html',\n  styleUrls: ['./ladorian-login.component.scss']\n})\nexport class LadorianLoginComponent {\n\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LadorianInputComponent } from '../core/ui/ladorian-input/ladorian-input.component';\nimport { LadorianBtnComponent } from '../core/ui/ladorian-btn/ladorian-btn.component';\nimport { LadorianSliderComponent } from '../core/ui/ladorian-slider/ladorian-slider.component';\nimport { TranslatePipe } from '../core/ui/translate/translate.pipe';\nimport { LadorianCheckboxComponent } from '../core/ui/ladorian-checkbox/ladorian-checkbox.component';\n\n@Component({\n  selector: 'ladorian-login',\n  standalone: true,\n  imports: [\n    CommonModule, \n    LadorianInputComponent, \n    LadorianBtnComponent, \n    LadorianSliderComponent, \n    TranslatePipe, \n    LadorianCheckboxComponent\n  ],\n  templateUrl: './ladorian-login.component.html',\n  styleUrls: ['./ladorian-login.component.scss']\n})\nexport class LadorianLoginComponent {\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -609,7 +681,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"wrap_home\">\n    <div class=\"login_wrap\">\n        <div class=\"login_up\">\n            <div class=\"not_members\">\n                <p>{{'ladorian-login-does-not-member' | translate }}</p>\n                <ladorian-btn class=\"bold-600\" type=\"default\" color=\"primary\">{{'ladorian-login-register' | translate}} </ladorian-btn>\n            </div>\n            <div class=\"login_logo\">\n                <img src=\"assets/img/logo.svg\" alt=\"logo\">\n            </div>\n        </div>\n        <div class=\"login_down\">\n            <h1>{{'ladorian-login-log-in' | translate}}</h1>\n            <span class=\"welcome\">{{'ladorian-login-welcome' | translate}} </span>\n            <div class=\"logo_google\">\n                <img src=\"assets/img/google-logo.svg\" alt=\"logo google\">\n            </div>\n            <div class=\"label_cotinue\">\n                <span>{{'ladorian-login-continue-mail' | translate}}</span>\n            </div>\n            <form action=\"\">\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-mail' | translate}}\" [required]=\"true\" type=\"email\"></ladorian-input>\n                </div>\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-password' | translate}}\" [required]=\"true\" type=\"password\"></ladorian-input>\n                </div>\n                <div class=\"form_down\">\n                    <div class=\"checkbox-wrapper\">\n                        <input class=\"inp-cbx\" id=\"morning\" type=\"checkbox\" />\n                        <label class=\"cbx\" for=\"morning\"><span>\n                                <svg width=\"12px\" height=\"10px\">\n                                    <use xlink:href=\"#check-4\"></use>\n                                </svg></span><span>{{'ladorian-app-remember' | translate}}</span></label>\n                        <svg class=\"inline-svg\">\n                            <symbol id=\"check\" viewbox=\"0 0 12 10\">\n                                <polyline points=\"1.5 6 4.5 9 10.5 1\"></polyline>\n                            </symbol>\n                        </svg>\n                    </div>\n                    <ladorian-btn type=\"default\" color=\"primary\">{{'ladorian-login-forgot' | translate}}</ladorian-btn>\n                </div>\n                <ladorian-btn type=\"filled\" color=\"secondary\" class=\"bold-700\">{{'ladorian-core-btn-loging' | translate}} </ladorian-btn>\n            </form>\n        </div>\n\n    </div>\n    <div class=\"sliders\">\n        <ladorian-slider></ladorian-slider>\n    </div>\n</div>"
+            "templateData": "<div class=\"wrap_home\">\n    <div class=\"login_wrap\">\n        <div class=\"login_up\">\n            <div class=\"not_members\">\n                <p>{{'ladorian-login-does-not-member' | translate }}</p>\n                <ladorian-btn class=\"bold-600\" type=\"default\" color=\"primary\">{{'ladorian-login-register' | translate}} </ladorian-btn>\n            </div>\n            <div class=\"login_logo\">\n                <img src=\"assets/img/logo.svg\" alt=\"logo\">\n            </div>\n        </div>\n        <div class=\"login_down\">\n            <h1>{{'ladorian-login-log-in' | translate}}</h1>\n            <span class=\"welcome\">{{'ladorian-login-welcome' | translate}} </span>\n            <div class=\"logo_google\">\n                <img src=\"assets/img/google-logo.svg\" alt=\"logo google\">\n            </div>\n            <div class=\"label_cotinue\">\n                <span>{{'ladorian-login-continue-mail' | translate}}</span>\n            </div>\n            <form action=\"\">\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-mail' | translate}}\" [required]=\"true\" type=\"email\"></ladorian-input>\n                </div>\n                <div class=\"wrap_input\">\n                    <ladorian-input placeholder=\"{{'ladorian-core-input-password' | translate}}\" [required]=\"true\" type=\"password\"></ladorian-input>\n                </div>\n                <div class=\"form_down\">\n                    <ladorian-checkbox label=\"{{'ladorian-app-remember' | translate}}\"></ladorian-checkbox>\n                    <ladorian-btn type=\"default\" color=\"primary\">{{'ladorian-login-forgot' | translate}}</ladorian-btn>\n                </div>\n                <ladorian-btn type=\"filled\" color=\"primary\" class=\"bold-700\">{{'ladorian-core-btn-loging' | translate}} </ladorian-btn>\n            </form>\n        </div>\n\n    </div>\n    <div class=\"sliders\">\n        <ladorian-slider></ladorian-slider>\n    </div>\n</div>"
         },
         {
             "name": "LadorianSliderComponent",
@@ -705,6 +777,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "noSelect",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "password",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -735,6 +817,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "seleccionado",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Slider",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -743,6 +835,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LadorianBtnComponent>",
+                "defaultValue": "(args: LadorianBtnComponent ) => ({\n    component: LadorianBtnComponent,\n    props: args,\n    template: `\n        <ladorian-btn type=\"${args.type}\" color=\"${args.color}\">Ladorian</ladorian-btn>\n    `,\n})"
             },
             {
                 "name": "Template",
@@ -758,21 +860,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
+                "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<LadorianSliderComponent>",
-                "defaultValue": "(args: LadorianSliderComponent) => ({\n    component: LadorianSliderComponent,\n    props: args,\n})"
+                "type": "Story<LadorianCheckboxComponent>",
+                "defaultValue": "(args: LadorianCheckboxComponent) => ({\n    component: LadorianCheckboxComponent,\n    props: args,\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/core/ui/ladorian-btn/lodorian-btn.component.stories.ts",
+                "file": "src/app/core/ui/ladorian-slider/lodorian-slider.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<LadorianBtnComponent>",
-                "defaultValue": "(args: LadorianBtnComponent ) => ({\n    component: LadorianBtnComponent,\n    props: args,\n    template: `\n        <ladorian-btn type=\"${args.type}\" color=\"${args.color}\">Ladorian</ladorian-btn>\n    `,\n})"
+                "type": "Story<LadorianSliderComponent>",
+                "defaultValue": "(args: LadorianSliderComponent) => ({\n    component: LadorianSliderComponent,\n    props: args,\n})"
             },
             {
                 "name": "text",
@@ -870,6 +972,38 @@
                     "deprecationMessage": "",
                     "type": "Story<LadorianBtnComponent>",
                     "defaultValue": "(args: LadorianBtnComponent ) => ({\n    component: LadorianBtnComponent,\n    props: args,\n    template: `\n        <ladorian-btn type=\"${args.type}\" color=\"${args.color}\">Ladorian</ladorian-btn>\n    `,\n})"
+                }
+            ],
+            "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts": [
+                {
+                    "name": "noSelect",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "seleccionado",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LadorianCheckboxComponent>",
+                    "defaultValue": "(args: LadorianCheckboxComponent) => ({\n    component: LadorianCheckboxComponent,\n    props: args,\n})"
                 }
             ],
             "src/app/core/ui/ladorian-input/lodorian-input.component.stories.ts": [
@@ -1065,6 +1199,45 @@
                 "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "noSelect",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "seleccionado",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/ui/ladorian-checkbox/ladorian-checkbox.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LadorianCheckboxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

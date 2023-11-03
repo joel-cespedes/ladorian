@@ -26,18 +26,7 @@
                     <ladorian-input placeholder="{{'ladorian-core-input-password' | translate}}" [required]="true" type="password"></ladorian-input>
                 </div>
                 <div class="form_down">
-                    <div class="checkbox-wrapper">
-                        <input class="inp-cbx" id="morning" type="checkbox" />
-                        <label class="cbx" for="morning"><span>
-                                <svg width="12px" height="10px">
-                                    <use xlink:href="#check-4"></use>
-                                </svg></span><span>{{'ladorian-app-remember' | translate}}</span></label>
-                        <svg class="inline-svg">
-                            <symbol id="check" viewbox="0 0 12 10">
-                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </symbol>
-                        </svg>
-                    </div>
+                    <ladorian-checkbox [value]="false" label="{{'ladorian-app-remember' | translate}}"></ladorian-checkbox>
                     <ladorian-btn type="default" color="primary">{{'ladorian-login-forgot' | translate}}</ladorian-btn>
                 </div>
                 <ladorian-btn type="filled" color="primary" class="bold-700">{{'ladorian-core-btn-loging' | translate}} </ladorian-btn>
