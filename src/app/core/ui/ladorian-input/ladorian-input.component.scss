@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    position: relative;
+}
+
+
+.wrap_input {
+    position: relative;
+
+    label {
+        display: block;
+        position: absolute;
+        top: 14px;
+        padding-left: 24px;
+
+    }
+    input {
+        font-family: 'DM Sans', sans-serif;
+        border: 1px solid var(--color-border);
+        padding: 16px 24px;
+        font-weight: 300;
+        border-radius: 48px;
+        width: 100%;
+        background: transparent;
+        font-weight: 400;
+        font-size: 16px;
+        &:focus {
+            padding: 22px 24px 10px 24px;
+        }
+
+    }
+}

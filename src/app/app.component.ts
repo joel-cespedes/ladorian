@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { LadorianLoginComponent } from './ladorian-login/ladorian-login.component';
+import { TranslateService } from './core/ui/translate/translate.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ladorian-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [ RouterOutlet, LadorianLoginComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ladorian';
+
 }

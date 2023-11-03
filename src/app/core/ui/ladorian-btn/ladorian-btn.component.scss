@@ -1,0 +1,36 @@
+:host-context(.bold-600) {
+    button {
+        font-weight: 600;
+    }
+}
+:host-context(.bold-700) {
+    button {
+        font-weight: 700;
+    }
+}
+
+button {
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+    display: block;
+}
+
+button.filled {
+    background-color: var(--color-primary);
+    border-radius: 100px;
+    color: white;
+    border: 1px solid transparent;
+    padding: 16px;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: white;
+        color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+
+    }
+}
+button.default {
+    background-color: transparent;
+    color: var(--color-primary);
+}

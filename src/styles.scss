@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/main.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    width: 100%;
+}
+body {
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--color-text);
+}
